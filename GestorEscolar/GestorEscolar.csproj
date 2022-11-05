@@ -55,6 +55,24 @@
     <Compile Include="AdminPage.Designer.cs">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FiltroDirectivos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FiltroDirectivos.Designer.cs">
+      <DependentUpon>FiltroDirectivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FiltroEstudiantes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FiltroEstudiantes.Designer.cs">
+      <DependentUpon>FiltroEstudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FiltroProfes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FiltroProfes.Designer.cs">
+      <DependentUpon>FiltroProfes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -66,6 +84,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FiltroDirectivos.resx">
+      <DependentUpon>FiltroDirectivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FiltroEstudiantes.resx">
+      <DependentUpon>FiltroEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FiltroProfes.resx">
+      <DependentUpon>FiltroProfes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

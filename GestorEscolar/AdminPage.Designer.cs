@@ -86,6 +86,7 @@
             // 
             // panelMenu
             // 
+            this.panelMenu.BackColor = System.Drawing.Color.OldLace;
             this.panelMenu.Controls.Add(this.btnDirectivos);
             this.panelMenu.Controls.Add(this.btnEstudiantes);
             this.panelMenu.Controls.Add(this.btnProfesores);
@@ -97,10 +98,10 @@
             // 
             // panelPrincipal
             // 
-            this.panelPrincipal.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panelPrincipal.Location = new System.Drawing.Point(15, 131);
+            this.panelPrincipal.BackColor = System.Drawing.SystemColors.Window;
+            this.panelPrincipal.Location = new System.Drawing.Point(15, 141);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(933, 350);
+            this.panelPrincipal.Size = new System.Drawing.Size(933, 340);
             this.panelPrincipal.TabIndex = 4;
             // 
             // AdminPage
@@ -111,6 +112,7 @@
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.panelMenu);
             this.Name = "AdminPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de administrador";
             this.Load += new System.EventHandler(this.AdminPage_Load);
             this.panelMenu.ResumeLayout(false);

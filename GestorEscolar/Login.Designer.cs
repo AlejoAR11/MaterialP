@@ -109,6 +109,7 @@
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtDoc);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de sesión";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
