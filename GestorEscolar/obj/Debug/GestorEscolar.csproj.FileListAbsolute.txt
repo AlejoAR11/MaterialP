@@ -1,0 +1,14 @@
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\bin\Debug\GestorEscolar.exe.config
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\bin\Debug\GestorEscolar.exe
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\bin\Debug\GestorEscolar.pdb
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\bin\Debug\MaterialSkin.dll
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.csproj.AssemblyReference.cache
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.csproj.SuggestedBindingRedirects.cache
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.Properties.Resources.resources
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.csproj.GenerateResource.cache
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.csproj.CoreCompileInputs.cache
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.csproj.CopyComplete
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.exe
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.pdb
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.Login.resources
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.AdminPage.resources
