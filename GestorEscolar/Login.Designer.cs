@@ -32,7 +32,6 @@
             this.txtPass = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnLogin = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnExit = new MaterialSkin.Controls.MaterialFlatButton();
-            this.btnRegistar = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // txtDoc
@@ -100,28 +99,11 @@
             this.btnExit.Text = "Salir";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
-            // btnRegistar
-            // 
-            this.btnRegistar.AutoSize = true;
-            this.btnRegistar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnRegistar.Depth = 0;
-            this.btnRegistar.Location = new System.Drawing.Point(326, 375);
-            this.btnRegistar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnRegistar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnRegistar.Name = "btnRegistar";
-            this.btnRegistar.Primary = false;
-            this.btnRegistar.Size = new System.Drawing.Size(108, 36);
-            this.btnRegistar.TabIndex = 5;
-            this.btnRegistar.Text = "Registrarsee";
-            this.btnRegistar.UseVisualStyleBackColor = true;
-            this.btnRegistar.Click += new System.EventHandler(this.btnRegistar_Click);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 500);
-            this.Controls.Add(this.btnRegistar);
+            this.ClientSize = new System.Drawing.Size(753, 483);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPass);
@@ -140,7 +122,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPass;
         private MaterialSkin.Controls.MaterialFlatButton btnLogin;
         private MaterialSkin.Controls.MaterialFlatButton btnExit;
-        private MaterialSkin.Controls.MaterialFlatButton btnRegistar;
     }
 }
 

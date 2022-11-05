@@ -15,7 +15,7 @@ namespace GestorEscolar
 {
     public partial class Login : MaterialSkin.Controls.MaterialForm
     {
-         static List<Usuarios> _Usuarios = new List<Usuarios>();
+         public static List<Usuarios> _Usuarios = new List<Usuarios>();
      
        
       
@@ -80,7 +80,7 @@ namespace GestorEscolar
             Leer();
         }
 
-        private void btnRegistar_Click(object sender, EventArgs e)
+       /* private void btnRegistar_Click(object sender, EventArgs e)
         {
             string nom = "Alejo";
             string id = "1000897372";
@@ -90,7 +90,7 @@ namespace GestorEscolar
             Db();
 
 
-        }
+        }*/
 
         private void txtDoc_Click(object sender, EventArgs e)
         {
