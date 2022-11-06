@@ -34,7 +34,6 @@
             this.gbDirectivos = new System.Windows.Forms.GroupBox();
             this.btnEliminar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnGuardar = new MaterialSkin.Controls.MaterialFlatButton();
-            this.btnSalir = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnMod = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnAdd = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
@@ -46,11 +45,11 @@
             this.txtDoc = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtNomb = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.dgvDirectivos = new System.Windows.Forms.DataGridView();
+            this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumContacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ColumnContacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flpAdmins.SuspendLayout();
             this.gbDirectivos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDirectivos)).BeginInit();
@@ -86,7 +85,6 @@
             // 
             this.gbDirectivos.Controls.Add(this.btnEliminar);
             this.gbDirectivos.Controls.Add(this.btnGuardar);
-            this.gbDirectivos.Controls.Add(this.btnSalir);
             this.gbDirectivos.Controls.Add(this.btnMod);
             this.gbDirectivos.Controls.Add(this.btnAdd);
             this.gbDirectivos.Controls.Add(this.materialLabel5);
@@ -119,6 +117,7 @@
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 
@@ -134,21 +133,6 @@
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.AutoSize = true;
-            this.btnSalir.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSalir.Depth = 0;
-            this.btnSalir.Location = new System.Drawing.Point(769, 292);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnSalir.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Primary = false;
-            this.btnSalir.Size = new System.Drawing.Size(49, 36);
-            this.btnSalir.TabIndex = 10;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
             // 
             // btnMod
             // 
@@ -308,7 +292,7 @@
             this.ColumnName,
             this.ColumnId,
             this.ColumnPass,
-            this.ColumContacto});
+            this.ColumnContacto});
             this.dgvDirectivos.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvDirectivos.Location = new System.Drawing.Point(290, 19);
             this.dgvDirectivos.Name = "dgvDirectivos";
@@ -317,6 +301,10 @@
             this.dgvDirectivos.TabIndex = 9;
             this.dgvDirectivos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDirectivos_CellContentClick);
             this.dgvDirectivos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDirectivos_CellDoubleClick);
+            // 
+            // errorProviderValidar
+            // 
+            this.errorProviderValidar.ContainerControl = this;
             // 
             // ColumnName
             // 
@@ -336,15 +324,11 @@
             this.ColumnPass.Name = "ColumnPass";
             this.ColumnPass.ReadOnly = true;
             // 
-            // ColumContacto
+            // ColumnContacto
             // 
-            this.ColumContacto.HeaderText = "Contacto";
-            this.ColumContacto.Name = "ColumContacto";
-            this.ColumContacto.ReadOnly = true;
-            // 
-            // errorProviderValidar
-            // 
-            this.errorProviderValidar.ContainerControl = this;
+            this.ColumnContacto.HeaderText = "Contacto";
+            this.ColumnContacto.Name = "ColumnContacto";
+            this.ColumnContacto.ReadOnly = true;
             // 
             // FiltroDirectivos
             // 
@@ -381,11 +365,10 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDoc;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtNomb;
         private System.Windows.Forms.DataGridView dgvDirectivos;
+        private System.Windows.Forms.ErrorProvider errorProviderValidar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumContacto;
-        private MaterialSkin.Controls.MaterialFlatButton btnSalir;
-        private System.Windows.Forms.ErrorProvider errorProviderValidar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnContacto;
     }
 }

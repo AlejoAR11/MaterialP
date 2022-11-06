@@ -96,6 +96,11 @@ namespace GestorEscolar
             Filtros(fe);
         }
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         //No sé si algo va aquí xd
 
 

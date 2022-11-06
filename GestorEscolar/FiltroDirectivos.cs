@@ -9,7 +9,6 @@ namespace GestorEscolar
         string nomb = "", doc = "", clave = "", contac = "";
 
         bool Validar, ValId;
-        int filaActual;
 
         public FiltroDirectivos()
         {
@@ -28,45 +27,57 @@ namespace GestorEscolar
             clave = txtPass.Text;
             contac = txtContacto.Text;
             Validar = ValidarDatos(nomb, doc, clave, contac);
+            ValId = true;
 
             if (Validar == true)
             {
-                ValId = ValidarId(doc);
+                if (doc != dgvDirectivos.CurrentRow.Cells["ColumnId"].Value.ToString())
+                {
+                    ValId = ValidarId(doc);
+                }
+
                 if (ValId == true)
                 {
 
-                    dgvDirectivos.Rows.Add(nomb, doc, clave, contac);
-                    MessageBox.Show("¡Usuario registrado con éxito!");
+                    dgvDirectivos.CurrentRow.Cells["ColumnName"].Value = nomb;
+                    dgvDirectivos.CurrentRow.Cells["ColumnId"].Value = doc;
+                    dgvDirectivos.CurrentRow.Cells["ColumnPass"].Value = clave;
+                    dgvDirectivos.CurrentRow.Cells["ColumnContacto"].Value = contac;
+                    MessageBox.Show("Usuario modificado correctamente");
+                    actBtn();
                     Limpiar();
 
                 }
 
             }
 
-
         }
+
 
 
         private void dgvDirectivos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+         
         }
 
         private void dgvDirectivos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            foreach(DataGridView row in dgvDirectivos.Rows)
+            try
             {
+                foreach (DataGridViewRow row in dgvDirectivos.Rows)
+                {
 
-                txtNomb.Text = dgvDirectivos.CurrentRow.Cells["ColumnName"].Value.ToString();
-                txtContacto.Text = dgvDirectivos.CurrentRow.Cells["ColumnContactos"].Value.ToString();
-                txtDoc.Text = dgvDirectivos.CurrentRow.Cells["ColumnId"].Value.ToString();
-                txtPass.Text = dgvDirectivos.CurrentRow.Cells["ColumnPass"].Value.ToString();
+                    txtNomb.Text = dgvDirectivos.CurrentRow.Cells["ColumnName"].Value.ToString();
+                    txtContacto.Text = dgvDirectivos.CurrentRow.Cells["ColumnContacto"].Value.ToString();
+                    txtDoc.Text = dgvDirectivos.CurrentRow.Cells["ColumnId"].Value.ToString();
+                    txtPass.Text = dgvDirectivos.CurrentRow.Cells["ColumnPass"].Value.ToString();
 
 
+                }
+
+                desactBtn();
             }
-            desactBtn();
-            
+            catch { }
 
         }
 
@@ -143,7 +154,28 @@ namespace GestorEscolar
 
         }
 
-       
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            string question = "¿Eliminar este usuario?";
+            string title = "Eliminar usuario";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(question, title, buttons);
+
+            if (result == DialogResult.Yes)
+            {
+                dgvDirectivos.Rows.RemoveAt(dgvDirectivos.CurrentRow.Index);
+                MessageBox.Show("Usuario eliminado correctamente.");
+                actBtn();
+                Limpiar();
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+
 
         //Validación para no permitir documentos repetidos
         public bool ValidarId(string _doc)
