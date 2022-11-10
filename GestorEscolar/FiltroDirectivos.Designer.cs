@@ -45,11 +45,11 @@
             this.txtDoc = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtNomb = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.dgvDirectivos = new System.Windows.Forms.DataGridView();
-            this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnContacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
             this.flpAdmins.SuspendLayout();
             this.gbDirectivos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDirectivos)).BeginInit();
@@ -101,6 +101,7 @@
             this.gbDirectivos.Size = new System.Drawing.Size(825, 325);
             this.gbDirectivos.TabIndex = 2;
             this.gbDirectivos.TabStop = false;
+            this.gbDirectivos.Enter += new System.EventHandler(this.gbDirectivos_Enter);
             // 
             // btnEliminar
             // 
@@ -133,6 +134,7 @@
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnMod
             // 
@@ -302,10 +304,6 @@
             this.dgvDirectivos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDirectivos_CellContentClick);
             this.dgvDirectivos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDirectivos_CellDoubleClick);
             // 
-            // errorProviderValidar
-            // 
-            this.errorProviderValidar.ContainerControl = this;
-            // 
             // ColumnName
             // 
             this.ColumnName.HeaderText = "Nombre";
@@ -329,6 +327,10 @@
             this.ColumnContacto.HeaderText = "Contacto";
             this.ColumnContacto.Name = "ColumnContacto";
             this.ColumnContacto.ReadOnly = true;
+            // 
+            // errorProviderValidar
+            // 
+            this.errorProviderValidar.ContainerControl = this;
             // 
             // FiltroDirectivos
             // 

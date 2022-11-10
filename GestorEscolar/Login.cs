@@ -39,13 +39,13 @@ namespace GestorEscolar
             StreamWriter db = new StreamWriter("C:\\Users\\AMD\\source\\repos\\GestorEscolar\\GestorEscolar\\Txt\\usuarios.txt");
             foreach(Usuarios x in _Usuarios)
             {
-                db.WriteLine($"{x.name};{x.id};{x.pass};{x.role}");
+                db.WriteLine($"{x.name};{x.id};{x.pass};{x.role}; {x.contact}");
 
             }
             db.Close();
         }
         
-       private void Leer()
+       private void Leer(List<Usuarios> _Usuarios)
         {
             StreamReader sr = new StreamReader("C:\\Users\\AMD\\source\\repos\\GestorEscolar\\GestorEscolar\\Txt\\usuarios.txt");
             string line = null;
@@ -54,7 +54,7 @@ namespace GestorEscolar
             while(line != null)
             {
                 string[] vec = line.Split(';');
-                _Usuarios.Add(new Usuarios(vec[0], vec[1], vec[2], vec[3]));
+                _Usuarios.Add(new Usuarios(vec[0], vec[1], vec[2], vec[3], vec[3]));
                 line = sr.ReadLine();
                 foreach(Usuarios v in _Usuarios)
                 {
@@ -77,7 +77,7 @@ namespace GestorEscolar
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            Leer();
+            Leer(_Usuarios);
         }
 
        /* private void btnRegistar_Click(object sender, EventArgs e)
@@ -86,6 +86,7 @@ namespace GestorEscolar
             string id = "1000897372";
             string pass = "654321";
             string role = "admin";
+            string contact = "555555"
             _Usuarios.Add(new Usuarios(nom, id, pass, role));
             Db();
 

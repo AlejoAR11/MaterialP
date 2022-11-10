@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -6,6 +8,8 @@ namespace GestorEscolar
 {
     public partial class FiltroDirectivos : UserControl
     {
+        public static List<Usuarios> _Usuarios = new List<Usuarios>();
+
         string nomb = "", doc = "", clave = "", contac = "";
 
         bool Validar, ValId;
@@ -17,8 +21,10 @@ namespace GestorEscolar
 
         private void flpPrincipal_Paint(object sender, PaintEventArgs e)
         {
-
+            
         }
+
+
 
         private void btnMod_Click(object sender, EventArgs e)
         {
@@ -173,6 +179,56 @@ namespace GestorEscolar
         private void btnSalir_Click(object sender, EventArgs e)
         {
            
+        }
+        //datos en el archivo plano
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+
+        for(int i = 0; i < dgvDirectivos.RowCount; i++) { 
+
+            string nom = dgvDirectivos.Rows[i].Cells["ColumnName"].Value.ToString();
+            string id = dgvDirectivos.Rows[i].Cells["ColumnId"].Value.ToString();
+            string pass = dgvDirectivos.Rows[i].Cells["ColumnPass"].Value.ToString();
+            string role = "admin";
+            string contac = dgvDirectivos.Rows[i].Cells["ColumnContacto"].Value.ToString();
+            _Usuarios.Add(new Usuarios(nom, id, pass, role, contac));
+                foreach(Usuarios rep in _Usuarios)
+                {
+                    if (rep.id.Contains(id))
+                    {
+
+
+
+
+
+                    }
+
+
+                }
+                MessageBox.Show("Datos guardados");
+            Db();
+                
+            }
+        }
+
+        static void Db()
+        {
+            StreamWriter db = new StreamWriter("C:\\Users\\AMD\\source\\repos\\GestorEscolar\\GestorEscolar\\Txt\\Admin.txt");
+            foreach (Usuarios x in _Usuarios)
+            {
+                db.WriteLine($"{x.name};{x.id};{x.pass};{x.role}; {x.contact}");
+              
+
+            }
+            db.Close();
+        }
+
+
+
+        private void gbDirectivos_Enter(object sender, EventArgs e)
+        {
+
         }
 
 

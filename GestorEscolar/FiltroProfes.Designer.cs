@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flpProfesores = new System.Windows.Forms.FlowLayoutPanel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.gbDirectivos = new System.Windows.Forms.GroupBox();
@@ -43,17 +44,16 @@
             this.txtPass = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtDoc = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtNomb = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.dgvDirectivos = new System.Windows.Forms.DataGridView();
+            this.dgvProfes = new System.Windows.Forms.DataGridView();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnContacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.ColumnGrupo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
             this.flpProfesores.SuspendLayout();
             this.gbDirectivos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDirectivos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProfes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidar)).BeginInit();
             this.SuspendLayout();
             // 
             // flpProfesores
@@ -65,6 +65,7 @@
             this.flpProfesores.Name = "flpProfesores";
             this.flpProfesores.Size = new System.Drawing.Size(933, 350);
             this.flpProfesores.TabIndex = 0;
+            this.flpProfesores.Paint += new System.Windows.Forms.PaintEventHandler(this.flpProfesores_Paint);
             // 
             // materialLabel1
             // 
@@ -75,14 +76,12 @@
             this.materialLabel1.Location = new System.Drawing.Point(3, 0);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(36, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(83, 19);
             this.materialLabel1.TabIndex = 1;
-            this.materialLabel1.Text = "prof";
+            this.materialLabel1.Text = "Profesores";
             // 
             // gbDirectivos
             // 
-            this.gbDirectivos.Controls.Add(this.checkedListBox1);
-            this.gbDirectivos.Controls.Add(this.materialLabel6);
             this.gbDirectivos.Controls.Add(this.btnEliminar);
             this.gbDirectivos.Controls.Add(this.btnGuardar);
             this.gbDirectivos.Controls.Add(this.btnMod);
@@ -95,8 +94,8 @@
             this.gbDirectivos.Controls.Add(this.txtPass);
             this.gbDirectivos.Controls.Add(this.txtDoc);
             this.gbDirectivos.Controls.Add(this.txtNomb);
-            this.gbDirectivos.Controls.Add(this.dgvDirectivos);
-            this.gbDirectivos.Location = new System.Drawing.Point(45, 3);
+            this.gbDirectivos.Controls.Add(this.dgvProfes);
+            this.gbDirectivos.Location = new System.Drawing.Point(92, 3);
             this.gbDirectivos.Name = "gbDirectivos";
             this.gbDirectivos.Size = new System.Drawing.Size(825, 325);
             this.gbDirectivos.TabIndex = 3;
@@ -280,23 +279,22 @@
             this.txtNomb.TabIndex = 1;
             this.txtNomb.UseSystemPasswordChar = false;
             // 
-            // dgvDirectivos
+            // dgvProfes
             // 
-            this.dgvDirectivos.AllowUserToAddRows = false;
-            this.dgvDirectivos.AllowUserToDeleteRows = false;
-            this.dgvDirectivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDirectivos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvProfes.AllowUserToAddRows = false;
+            this.dgvProfes.AllowUserToDeleteRows = false;
+            this.dgvProfes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProfes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnName,
             this.ColumnId,
             this.ColumnPass,
-            this.ColumnContacto,
-            this.ColumnGrupo});
-            this.dgvDirectivos.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvDirectivos.Location = new System.Drawing.Point(290, 19);
-            this.dgvDirectivos.Name = "dgvDirectivos";
-            this.dgvDirectivos.ReadOnly = true;
-            this.dgvDirectivos.Size = new System.Drawing.Size(477, 199);
-            this.dgvDirectivos.TabIndex = 9;
+            this.ColumnContacto});
+            this.dgvProfes.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvProfes.Location = new System.Drawing.Point(290, 19);
+            this.dgvProfes.Name = "dgvProfes";
+            this.dgvProfes.ReadOnly = true;
+            this.dgvProfes.Size = new System.Drawing.Size(447, 199);
+            this.dgvProfes.TabIndex = 9;
             // 
             // ColumnName
             // 
@@ -322,37 +320,9 @@
             this.ColumnContacto.Name = "ColumnContacto";
             this.ColumnContacto.ReadOnly = true;
             // 
-            // materialLabel6
+            // errorProviderValidar
             // 
-            this.materialLabel6.AutoSize = true;
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(6, 244);
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(71, 19);
-            this.materialLabel6.TabIndex = 15;
-            this.materialLabel6.Text = "Contacto";
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Grupo 1",
-            "Grupo 2",
-            "Grupo 3",
-            "Grupo 4"});
-            this.checkedListBox1.Location = new System.Drawing.Point(125, 231);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 79);
-            this.checkedListBox1.TabIndex = 16;
-            // 
-            // ColumnGrupo
-            // 
-            this.ColumnGrupo.HeaderText = "Grupos";
-            this.ColumnGrupo.Name = "ColumnGrupo";
-            this.ColumnGrupo.ReadOnly = true;
+            this.errorProviderValidar.ContainerControl = this;
             // 
             // FiltroProfes
             // 
@@ -365,7 +335,8 @@
             this.flpProfesores.PerformLayout();
             this.gbDirectivos.ResumeLayout(false);
             this.gbDirectivos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDirectivos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProfes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -375,8 +346,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpProfesores;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.GroupBox gbDirectivos;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialFlatButton btnEliminar;
         private MaterialSkin.Controls.MaterialFlatButton btnGuardar;
         private MaterialSkin.Controls.MaterialFlatButton btnMod;
@@ -389,11 +358,11 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPass;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDoc;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtNomb;
-        private System.Windows.Forms.DataGridView dgvDirectivos;
+        private System.Windows.Forms.DataGridView dgvProfes;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPass;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnContacto;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnGrupo;
+        private System.Windows.Forms.ErrorProvider errorProviderValidar;
     }
 }

@@ -12,12 +12,14 @@ namespace GestorEscolar
         public string id { get; set; }
         public string pass { get; set; }
         public string role { get; set; }
+        public string contact { get; set; }
 
-        public  Usuarios(string _name, string _id, string _pass, string _role) {
+        public  Usuarios(string _name, string _id, string _pass, string _role, string _contact) {
             name = _name;
             id = _id;
             pass = _pass;
             role = _role;
+            contact = _contact;
 
 
             
