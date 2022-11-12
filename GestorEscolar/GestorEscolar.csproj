@@ -73,6 +73,12 @@
     <Compile Include="FiltroProfes.Designer.cs">
       <DependentUpon>FiltroProfes.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectivoPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectivoPage.Designer.cs">
+      <DependentUpon>DirectivoPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -84,6 +90,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectivoPage.resx">
+      <DependentUpon>DirectivoPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FiltroDirectivos.resx">
       <DependentUpon>FiltroDirectivos.cs</DependentUpon>

@@ -45,11 +45,14 @@
             this.txtDoc = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtNomb = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.dgvDirectivos = new System.Windows.Forms.DataGridView();
+            this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnContacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbRole = new System.Windows.Forms.ComboBox();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.flpAdmins.SuspendLayout();
             this.gbDirectivos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDirectivos)).BeginInit();
@@ -83,6 +86,8 @@
             // 
             // gbDirectivos
             // 
+            this.gbDirectivos.Controls.Add(this.materialLabel6);
+            this.gbDirectivos.Controls.Add(this.cbRole);
             this.gbDirectivos.Controls.Add(this.btnEliminar);
             this.gbDirectivos.Controls.Add(this.btnGuardar);
             this.gbDirectivos.Controls.Add(this.btnMod);
@@ -294,6 +299,7 @@
             this.ColumnName,
             this.ColumnId,
             this.ColumnPass,
+            this.ColumnRole,
             this.ColumnContacto});
             this.dgvDirectivos.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvDirectivos.Location = new System.Drawing.Point(290, 19);
@@ -303,6 +309,10 @@
             this.dgvDirectivos.TabIndex = 9;
             this.dgvDirectivos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDirectivos_CellContentClick);
             this.dgvDirectivos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDirectivos_CellDoubleClick);
+            // 
+            // errorProviderValidar
+            // 
+            this.errorProviderValidar.ContainerControl = this;
             // 
             // ColumnName
             // 
@@ -322,15 +332,43 @@
             this.ColumnPass.Name = "ColumnPass";
             this.ColumnPass.ReadOnly = true;
             // 
+            // ColumnRole
+            // 
+            this.ColumnRole.HeaderText = "Rol";
+            this.ColumnRole.Name = "ColumnRole";
+            this.ColumnRole.ReadOnly = true;
+            // 
             // ColumnContacto
             // 
             this.ColumnContacto.HeaderText = "Contacto";
             this.ColumnContacto.Name = "ColumnContacto";
             this.ColumnContacto.ReadOnly = true;
             // 
-            // errorProviderValidar
+            // cbRole
             // 
-            this.errorProviderValidar.ContainerControl = this;
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Items.AddRange(new object[] {
+            "admin",
+            "directivo",
+            "profesor",
+            "estudiante"});
+            this.cbRole.Location = new System.Drawing.Point(125, 242);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(121, 21);
+            this.cbRole.TabIndex = 15;
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(6, 244);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(31, 19);
+            this.materialLabel6.TabIndex = 16;
+            this.materialLabel6.Text = "Rol";
             // 
             // FiltroDirectivos
             // 
@@ -371,6 +409,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRole;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnContacto;
+        private System.Windows.Forms.ComboBox cbRole;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
     }
 }

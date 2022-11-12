@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -9,17 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
-using MaterialSkin.Controls;
 
 namespace GestorEscolar
 {
-    public partial class AdminPage : MaterialSkin.Controls.MaterialForm
+    public partial class DirectivoPage : MaterialSkin.Controls.MaterialForm
     {
         //Estilo de los botones
         private Button btnSel;
         private Panel borde;
-
-        public AdminPage()
+        public DirectivoPage()
         {
             InitializeComponent();
             borde = new Panel();
@@ -34,7 +31,7 @@ namespace GestorEscolar
         private void ActivarBtns(object boton)
         {
             DesacBtns();
-            if(boton != null)
+            if (boton != null)
             {
                 btnSel = (Button)boton;
                 btnSel.ForeColor = Color.Gold;
@@ -43,26 +40,27 @@ namespace GestorEscolar
                 borde.Location = new Point(btnSel.Location.X, 34);
                 borde.Visible = true;
                 borde.BringToFront();
-                          
+
             }
         }
 
         private void DesacBtns()
         {
-            if(btnSel != null)
+            if (btnSel != null)
             {
                 btnSel.ForeColor = Color.Black;
             }
         }
 
-        private void Filtros(UserControl filtro) {
+        private void Filtros(UserControl filtro)
+        {
 
             filtro.Dock = DockStyle.Fill;
             panelPrincipal.Controls.Clear();
             panelPrincipal.Controls.Add(filtro);
             filtro.BringToFront();
 
-        
+
         }
 
         private void AdminPage_Load(object sender, EventArgs e)
@@ -72,9 +70,7 @@ namespace GestorEscolar
 
         private void btnDirectivos_Click(object sender, EventArgs e)
         {
-            ActivarBtns(sender);
-            FiltroDirectivos fd = new FiltroDirectivos();
-            Filtros(fd);
+            MessageBox.Show("No tiene permisos para ingresar");
         }
 
         private void btnProfesores_Click(object sender, EventArgs e)
@@ -86,7 +82,7 @@ namespace GestorEscolar
 
         private void panelMenu_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void btnEstudiantes_Click(object sender, EventArgs e)
@@ -98,10 +94,12 @@ namespace GestorEscolar
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Login inicio = new Login();
             this.Close();
-            inicio.Show();
+        }
 
+        private void DirectivoPage_Load(object sender, EventArgs e)
+        {
+            SkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
         }
 
         //No sé si algo va aquí xd
@@ -112,4 +110,3 @@ namespace GestorEscolar
     }
 
 }
-

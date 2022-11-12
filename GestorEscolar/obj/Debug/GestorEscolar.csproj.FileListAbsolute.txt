@@ -15,3 +15,4 @@ C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.Ad
 C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.FiltroDirectivos.resources
 C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.FiltroEstudiantes.resources
 C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.FiltroProfes.resources
+C:\Users\AMD\source\repos\GestorEscolar\GestorEscolar\obj\Debug\GestorEscolar.DirectivoPage.resources

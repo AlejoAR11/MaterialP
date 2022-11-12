@@ -34,7 +34,6 @@
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.btnSalir = new MaterialSkin.Controls.MaterialFlatButton();
-            this.btnGrupos = new MaterialSkin.Controls.MaterialFlatButton();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,13 +88,12 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.OldLace;
-            this.panelMenu.Controls.Add(this.btnGrupos);
             this.panelMenu.Controls.Add(this.btnDirectivos);
             this.panelMenu.Controls.Add(this.btnEstudiantes);
             this.panelMenu.Controls.Add(this.btnProfesores);
             this.panelMenu.Location = new System.Drawing.Point(12, 73);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(421, 48);
+            this.panelMenu.Size = new System.Drawing.Size(323, 48);
             this.panelMenu.TabIndex = 3;
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
             // 
@@ -122,21 +120,6 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnGrupos
-            // 
-            this.btnGrupos.AutoSize = true;
-            this.btnGrupos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnGrupos.Depth = 0;
-            this.btnGrupos.Location = new System.Drawing.Point(329, 6);
-            this.btnGrupos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnGrupos.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnGrupos.Name = "btnGrupos";
-            this.btnGrupos.Primary = false;
-            this.btnGrupos.Size = new System.Drawing.Size(65, 36);
-            this.btnGrupos.TabIndex = 3;
-            this.btnGrupos.Text = "Grupos";
-            this.btnGrupos.UseVisualStyleBackColor = true;
             // 
             // AdminPage
             // 
@@ -165,6 +148,5 @@
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelPrincipal;
         private MaterialSkin.Controls.MaterialFlatButton btnSalir;
-        private MaterialSkin.Controls.MaterialFlatButton btnGrupos;
     }
 }
