@@ -32,6 +32,8 @@
             this.flpProfesores = new System.Windows.Forms.FlowLayoutPanel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.gbDirectivos = new System.Windows.Forms.GroupBox();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.cbRole = new System.Windows.Forms.ComboBox();
             this.btnEliminar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnGuardar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnMod = new MaterialSkin.Controls.MaterialFlatButton();
@@ -48,6 +50,7 @@
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnContacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
             this.flpProfesores.SuspendLayout();
@@ -65,7 +68,6 @@
             this.flpProfesores.Name = "flpProfesores";
             this.flpProfesores.Size = new System.Drawing.Size(933, 350);
             this.flpProfesores.TabIndex = 0;
-            this.flpProfesores.Paint += new System.Windows.Forms.PaintEventHandler(this.flpProfesores_Paint);
             // 
             // materialLabel1
             // 
@@ -82,6 +84,8 @@
             // 
             // gbDirectivos
             // 
+            this.gbDirectivos.Controls.Add(this.materialLabel6);
+            this.gbDirectivos.Controls.Add(this.cbRole);
             this.gbDirectivos.Controls.Add(this.btnEliminar);
             this.gbDirectivos.Controls.Add(this.btnGuardar);
             this.gbDirectivos.Controls.Add(this.btnMod);
@@ -100,6 +104,32 @@
             this.gbDirectivos.Size = new System.Drawing.Size(825, 325);
             this.gbDirectivos.TabIndex = 3;
             this.gbDirectivos.TabStop = false;
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(6, 244);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(31, 19);
+            this.materialLabel6.TabIndex = 16;
+            this.materialLabel6.Text = "Rol";
+            // 
+            // cbRole
+            // 
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Items.AddRange(new object[] {
+            "admin",
+            "directivo",
+            "profesor",
+            "estudiante"});
+            this.cbRole.Location = new System.Drawing.Point(125, 242);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(121, 21);
+            this.cbRole.TabIndex = 15;
             // 
             // btnEliminar
             // 
@@ -166,6 +196,7 @@
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Agregar";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // materialLabel5
             // 
@@ -288,13 +319,15 @@
             this.ColumnName,
             this.ColumnId,
             this.ColumnPass,
+            this.ColumnRole,
             this.ColumnContacto});
             this.dgvProfes.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvProfes.Location = new System.Drawing.Point(290, 19);
             this.dgvProfes.Name = "dgvProfes";
             this.dgvProfes.ReadOnly = true;
-            this.dgvProfes.Size = new System.Drawing.Size(447, 199);
+            this.dgvProfes.Size = new System.Drawing.Size(436, 199);
             this.dgvProfes.TabIndex = 9;
+            this.dgvProfes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfes_CellContentClick);
             // 
             // ColumnName
             // 
@@ -313,6 +346,12 @@
             this.ColumnPass.HeaderText = "Contraseña";
             this.ColumnPass.Name = "ColumnPass";
             this.ColumnPass.ReadOnly = true;
+            // 
+            // ColumnRole
+            // 
+            this.ColumnRole.HeaderText = "Rol";
+            this.ColumnRole.Name = "ColumnRole";
+            this.ColumnRole.ReadOnly = true;
             // 
             // ColumnContacto
             // 
@@ -345,7 +384,10 @@
 
         private System.Windows.Forms.FlowLayoutPanel flpProfesores;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.ErrorProvider errorProviderValidar;
         private System.Windows.Forms.GroupBox gbDirectivos;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private System.Windows.Forms.ComboBox cbRole;
         private MaterialSkin.Controls.MaterialFlatButton btnEliminar;
         private MaterialSkin.Controls.MaterialFlatButton btnGuardar;
         private MaterialSkin.Controls.MaterialFlatButton btnMod;
@@ -362,7 +404,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRole;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnContacto;
-        private System.Windows.Forms.ErrorProvider errorProviderValidar;
     }
 }

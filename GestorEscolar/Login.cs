@@ -49,6 +49,11 @@ namespace GestorEscolar
             StreamReader sr2 = new StreamReader(".\\directivos.txt");
             string line2 = null;
             line2 = sr2.ReadLine();
+            //notas 
+            StreamReader sr3 = new StreamReader(".\\estudiantes.txt");
+            string line3 = null;
+            line3 = sr3.ReadLine();
+
 
 
             do
@@ -117,7 +122,7 @@ namespace GestorEscolar
 
                                 else
                                 {
-                                    op = 2;
+                                    op = 3;
                                 }
 
                             }
@@ -125,11 +130,52 @@ namespace GestorEscolar
 
                         break;
 
+                    case 3:
+                        while (line3 != null)
+                        {
+                            //estudiantes
+                            string[] vec3 = line3.Split(';');
+                            _Usuarios.Add(new Usuarios(vec3[0], vec3[1], vec3[2], vec3[3], vec3[4]));
+                            line3 = sr3.ReadLine();
+
+
+                            foreach (Usuarios v3 in _Usuarios)
+                            {
+
+                                if (txtDoc.Text == v3.id && txtPass.Text == v3.pass && v3.role == "directivo")
+                                {
+                                    MessageBox.Show("Bienvenido " + v3.name);
+                                    EstudiantePage estudiante = new EstudiantePage();
+
+                                    estudiante.Show();
+                                    this.Hide();
+                                    cont = 3;
+
+                                }
+
+
+                                else
+                                {
+                                    op = 2;
+                                }
+
+                            }
+                        }
+
+
+                        break;
+
+                    default:
+                        cont = 4;
+                        if (cont > 3) { MessageBox.Show("Usuario no encontrado"); }
+                        cont = 3;
+                        sr.Close();
+                        break;
+
                 }
 
 
-                if (cont > 3) { MessageBox.Show("Usuario no encontrado"); }
-                sr.Close();
+               
 
             } while (cont != 3);
 

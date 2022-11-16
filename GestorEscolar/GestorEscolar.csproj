@@ -79,6 +79,12 @@
     <Compile Include="DirectivoPage.Designer.cs">
       <DependentUpon>DirectivoPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Estudiante Page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estudiante Page.Designer.cs">
+      <DependentUpon>Estudiante Page.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FiltroProfes.resx">
       <DependentUpon>FiltroProfes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estudiante Page.resx">
+      <DependentUpon>Estudiante Page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

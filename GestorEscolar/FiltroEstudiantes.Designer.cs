@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.flpEstudiantes = new System.Windows.Forms.FlowLayoutPanel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbDirectivos = new System.Windows.Forms.GroupBox();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.cbRole = new System.Windows.Forms.ComboBox();
             this.btnEliminar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnGuardar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnMod = new MaterialSkin.Controls.MaterialFlatButton();
@@ -49,11 +50,13 @@
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnContacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProviderValidar = new System.Windows.Forms.ErrorProvider(this.components);
             this.flpEstudiantes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidar)).BeginInit();
             this.gbDirectivos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiantes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidar)).BeginInit();
             this.SuspendLayout();
             // 
             // flpEstudiantes
@@ -65,6 +68,7 @@
             this.flpEstudiantes.Name = "flpEstudiantes";
             this.flpEstudiantes.Size = new System.Drawing.Size(933, 350);
             this.flpEstudiantes.TabIndex = 0;
+            this.flpEstudiantes.Paint += new System.Windows.Forms.PaintEventHandler(this.flpEstudiantes_Paint);
             // 
             // materialLabel1
             // 
@@ -79,12 +83,10 @@
             this.materialLabel1.TabIndex = 1;
             this.materialLabel1.Text = "Estudiantes";
             // 
-            // errorProviderValidar
-            // 
-            this.errorProviderValidar.ContainerControl = this;
-            // 
             // gbDirectivos
             // 
+            this.gbDirectivos.Controls.Add(this.materialLabel6);
+            this.gbDirectivos.Controls.Add(this.cbRole);
             this.gbDirectivos.Controls.Add(this.btnEliminar);
             this.gbDirectivos.Controls.Add(this.btnGuardar);
             this.gbDirectivos.Controls.Add(this.btnMod);
@@ -104,6 +106,32 @@
             this.gbDirectivos.TabIndex = 4;
             this.gbDirectivos.TabStop = false;
             // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(6, 244);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(31, 19);
+            this.materialLabel6.TabIndex = 16;
+            this.materialLabel6.Text = "Rol";
+            // 
+            // cbRole
+            // 
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Items.AddRange(new object[] {
+            "admin",
+            "directivo",
+            "profesor",
+            "estudiante"});
+            this.cbRole.Location = new System.Drawing.Point(125, 242);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(121, 21);
+            this.cbRole.TabIndex = 15;
+            // 
             // btnEliminar
             // 
             this.btnEliminar.AutoSize = true;
@@ -119,6 +147,7 @@
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
             // 
             // btnGuardar
             // 
@@ -134,6 +163,7 @@
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_1);
             // 
             // btnMod
             // 
@@ -150,6 +180,7 @@
             this.btnMod.TabIndex = 6;
             this.btnMod.Text = "Modificar";
             this.btnMod.UseVisualStyleBackColor = true;
+            this.btnMod.Click += new System.EventHandler(this.btnMod_Click_1);
             // 
             // btnAdd
             // 
@@ -169,6 +200,7 @@
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Agregar";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // materialLabel5
             // 
@@ -291,13 +323,15 @@
             this.ColumnName,
             this.ColumnId,
             this.ColumnPass,
+            this.ColumnRole,
             this.ColumnContacto});
             this.dgvEstudiantes.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvEstudiantes.Location = new System.Drawing.Point(290, 19);
             this.dgvEstudiantes.Name = "dgvEstudiantes";
             this.dgvEstudiantes.ReadOnly = true;
-            this.dgvEstudiantes.Size = new System.Drawing.Size(447, 199);
+            this.dgvEstudiantes.Size = new System.Drawing.Size(436, 199);
             this.dgvEstudiantes.TabIndex = 9;
+            this.dgvEstudiantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudiantes_CellContentClick_1);
             // 
             // ColumnName
             // 
@@ -317,11 +351,21 @@
             this.ColumnPass.Name = "ColumnPass";
             this.ColumnPass.ReadOnly = true;
             // 
+            // ColumnRole
+            // 
+            this.ColumnRole.HeaderText = "Rol";
+            this.ColumnRole.Name = "ColumnRole";
+            this.ColumnRole.ReadOnly = true;
+            // 
             // ColumnContacto
             // 
             this.ColumnContacto.HeaderText = "Contacto";
             this.ColumnContacto.Name = "ColumnContacto";
             this.ColumnContacto.ReadOnly = true;
+            // 
+            // errorProviderValidar
+            // 
+            this.errorProviderValidar.ContainerControl = this;
             // 
             // FiltroEstudiantes
             // 
@@ -332,10 +376,10 @@
             this.Size = new System.Drawing.Size(933, 350);
             this.flpEstudiantes.ResumeLayout(false);
             this.flpEstudiantes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidar)).EndInit();
             this.gbDirectivos.ResumeLayout(false);
             this.gbDirectivos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiantes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -346,6 +390,8 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.ErrorProvider errorProviderValidar;
         private System.Windows.Forms.GroupBox gbDirectivos;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private System.Windows.Forms.ComboBox cbRole;
         private MaterialSkin.Controls.MaterialFlatButton btnEliminar;
         private MaterialSkin.Controls.MaterialFlatButton btnGuardar;
         private MaterialSkin.Controls.MaterialFlatButton btnMod;
@@ -362,6 +408,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRole;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnContacto;
     }
 }

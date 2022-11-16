@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GestorEscolar
@@ -13,7 +8,9 @@ namespace GestorEscolar
     public partial class FiltroEstudiantes : UserControl
     {
 
-        string nomb = "", doc = "", clave = "", contac = "";
+        public static List<Usuarios> _Usuarios = new List<Usuarios>();
+
+        string nomb = "", doc = "", clave = "", contac = "", role = "";
 
         bool Validar, ValId;
 
@@ -24,50 +21,33 @@ namespace GestorEscolar
 
         private void flpPrincipal_Paint(object sender, PaintEventArgs e)
         {
+            StreamReader sr = new StreamReader(".\\estudiantes.txt");
+            string line = null;
 
+            while (!sr.EndOfStream)
+            {
+                line = sr.ReadLine();
+                string[] leer = line.Split(';');
+
+                dgvEstudiantes.Rows.Add(leer);
+            }
+            sr.Close();
         }
+
+
 
         private void btnMod_Click(object sender, EventArgs e)
         {
-            nomb = txtNomb.Text;
-            doc = txtDoc.Text;
-            clave = txtPass.Text;
-            contac = txtContacto.Text;
-            Validar = ValidarDatos(nomb, doc, clave, contac);
-            ValId = true;
-
-            if (Validar == true)
-            {
-                if (doc != dgvEstudiantes.CurrentRow.Cells["ColumnId"].Value.ToString())
-                {
-                    ValId = ValidarId(doc);
-                }
-
-                if (ValId == true)
-                {
-
-                    dgvEstudiantes.CurrentRow.Cells["ColumnName"].Value = nomb;
-                    dgvEstudiantes.CurrentRow.Cells["ColumnId"].Value = doc;
-                    dgvEstudiantes.CurrentRow.Cells["ColumnPass"].Value = clave;
-                    dgvEstudiantes.CurrentRow.Cells["ColumnContacto"].Value = contac;
-                    MessageBox.Show("Usuario modificado correctamente");
-                    actBtn();
-                    Limpiar();
-
-                }
-
-            }
+            
 
         }
-
-
 
         private void dgvEstudiantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void dgvEstudiantes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvEstudiantes_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -77,9 +57,8 @@ namespace GestorEscolar
                     txtNomb.Text = dgvEstudiantes.CurrentRow.Cells["ColumnName"].Value.ToString();
                     txtContacto.Text = dgvEstudiantes.CurrentRow.Cells["ColumnContacto"].Value.ToString();
                     txtDoc.Text = dgvEstudiantes.CurrentRow.Cells["ColumnId"].Value.ToString();
+                    cbRole.Text = dgvEstudiantes.CurrentRow.Cells["ColumnRole"].Value.ToString();
                     txtPass.Text = dgvEstudiantes.CurrentRow.Cells["ColumnPass"].Value.ToString();
-
-
                 }
 
                 desactBtn();
@@ -88,33 +67,10 @@ namespace GestorEscolar
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            nomb = txtNomb.Text;
-            doc = txtDoc.Text;
-            clave = txtPass.Text;
-            contac = txtContacto.Text;
-            Validar = ValidarDatos(nomb, doc, clave, contac);
-
-            if (Validar == true)
-            {
-                ValId = ValidarId(doc);
-                if (ValId == true)
-                {
-
-                    dgvEstudiantes.Rows.Add(nomb, doc, clave, contac);
-                    MessageBox.Show("¡Usuario registrado con éxito!");
-                    Limpiar();
-
-                }
-
-            }
-
-
-        }
+       
 
         //validación a la hora de registrar datos
-        public bool ValidarDatos(string _nomb, string _doc, string _clave, string _contac)
+        public bool ValidarDatos(string _nomb, string _doc, string _clave, string _contac, string _role)
         {
             if (_nomb == "")
             {
@@ -147,6 +103,13 @@ namespace GestorEscolar
                 Validar = false;
 
             }
+            else if (_role == "" || _role != "estudiante")
+            {
+                MessageBox.Show("Falta ingresar el rol");
+                errorProviderValidar.SetError(cbRole, "Ingrese el rol ");
+                Validar = false;
+
+            }
             else
             {
                 Validar = true;
@@ -154,6 +117,7 @@ namespace GestorEscolar
                 errorProviderValidar.SetError(txtDoc, "");
                 errorProviderValidar.SetError(txtPass, "");
                 errorProviderValidar.SetError(txtContacto, "");
+                errorProviderValidar.SetError(cbRole, "");
             }
 
 
@@ -161,7 +125,7 @@ namespace GestorEscolar
 
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             string question = "¿Eliminar este usuario?";
             string title = "Eliminar usuario";
@@ -171,6 +135,21 @@ namespace GestorEscolar
             if (result == DialogResult.Yes)
             {
                 dgvEstudiantes.Rows.RemoveAt(dgvEstudiantes.CurrentRow.Index);
+
+                foreach (Usuarios del in _Usuarios)
+                {
+
+                    string nom = dgvEstudiantes.CurrentRow.Cells["ColumnName"].Value.ToString();
+                    string id = dgvEstudiantes.CurrentRow.Cells["ColumnId"].Value.ToString();
+                    string pass = dgvEstudiantes.CurrentRow.Cells["ColumnPass"].Value.ToString();
+                    string role = dgvEstudiantes.CurrentRow.Cells["ColumnRole"].Value.ToString();
+                    string contac = dgvEstudiantes.CurrentRow.Cells["ColumnContacto"].Value.ToString();
+                    _Usuarios.Remove(new Usuarios(del.name, del.id, del.pass, del.role, del.contact));
+                }
+
+                Db();
+
+
                 MessageBox.Show("Usuario eliminado correctamente.");
                 actBtn();
                 Limpiar();
@@ -178,6 +157,119 @@ namespace GestorEscolar
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
+        {
+
+        }
+        //datos en el archivo plano
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+
+            
+
+        }
+
+        static void Db()
+        {
+            StreamWriter db = new StreamWriter(".\\estudiantes.txt");
+            foreach (Usuarios x in _Usuarios)
+            {
+                db.WriteLine($"{x.name};{x.id};{x.pass};{x.role};{x.contact}");
+
+            }
+            db.Close();
+        }
+
+        private void flpEstudiantes_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+                nomb = txtNomb.Text;
+                doc = txtDoc.Text;
+                clave = txtPass.Text;
+                contac = txtContacto.Text;
+                role = cbRole.Text;
+
+                Validar = ValidarDatos(nomb, doc, clave, contac, role);
+
+                if (Validar == true)
+                {
+                    ValId = ValidarId(doc);
+                    if (ValId == true)
+                    {
+
+                        dgvEstudiantes.Rows.Add(nomb, doc, clave, role, contac);
+                        MessageBox.Show("¡Usuario registrado con éxito!");
+                        Limpiar();
+
+                    }
+
+                }
+
+        }
+
+        private void btnMod_Click_1(object sender, EventArgs e)
+        {
+            nomb = txtNomb.Text;
+            doc = txtDoc.Text;
+            clave = txtPass.Text;
+            contac = txtContacto.Text;
+            role = cbRole.Text;
+            Validar = ValidarDatos(nomb, doc, clave, contac, role);
+            ValId = true;
+
+            if (Validar == true)
+            {
+                if (doc != dgvEstudiantes.CurrentRow.Cells["ColumnId"].Value.ToString())
+                {
+                    ValId = ValidarId(doc);
+                }
+
+                if (ValId == true)
+                {
+
+                    dgvEstudiantes.CurrentRow.Cells["ColumnName"].Value = nomb;
+                    dgvEstudiantes.CurrentRow.Cells["ColumnId"].Value = doc;
+                    dgvEstudiantes.CurrentRow.Cells["ColumnPass"].Value = clave;
+                    dgvEstudiantes.CurrentRow.Cells["ColumnRole"].Value = role;
+                    dgvEstudiantes.CurrentRow.Cells["ColumnContacto"].Value = contac;
+                    MessageBox.Show("Usuario modificado correctamente");
+                    actBtn();
+                    Limpiar();
+
+                }
+
+            }
+        }
+
+        private void btnGuardar_Click_1(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgvEstudiantes.RowCount; i++)
+            {
+
+                string nom = dgvEstudiantes.Rows[i].Cells["ColumnName"].Value.ToString();
+                string id = dgvEstudiantes.Rows[i].Cells["ColumnId"].Value.ToString();
+                string pass = dgvEstudiantes.Rows[i].Cells["ColumnPass"].Value.ToString();
+                string role = dgvEstudiantes.Rows[i].Cells["ColumnRole"].Value.ToString();
+                string contac = dgvEstudiantes.Rows[i].Cells["ColumnContacto"].Value.ToString();
+                _Usuarios.Add(new Usuarios(nom, id, pass, role, contac));
+
+                Db();
+
+            }
+            MessageBox.Show("Datos guardados");
+        }
+
+
+        private void dgvEstudiantes_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void gbDirectivos_Enter(object sender, EventArgs e)
         {
 
         }
@@ -244,4 +336,5 @@ namespace GestorEscolar
 
     }
 }
-       
+
+
